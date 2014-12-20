@@ -189,20 +189,20 @@ end
 # Set some basic configuration and define the bot object.
 bot = Cinch::Bot.new do
     configure do |c|
-        pwd = File.dirname( File.expand_path(__FILE__))
-        cred = File.open(pwd + "/credfile", &:readline)
+        # pwd = File.dirname( File.expand_path(__FILE__))
+        # cred = File.open(pwd + "/credfile", &:readline)
         c.server = "irc.freenode.net"
         c.channels = ["#mit2019"]
-        c.nick = "mitbot"
+        c.nick = "mitbot2"
         c.realname = "Tim the Beaver"
         c.user = "mit"
-        c.password = cred
+        # c.password = cred
         c.plugins.plugins = [Hello, MIT]
     end
 
     on :message do |m|
     msg = m.message.downcase
-    words = ['illuminati', 'triangle', 'conspiracy', 'three', 'confirmed', 'secret', 'society', 'chris', 'peterson']
+    words = ['triangle', 'conspiracy', 'three', 'secret', 'society', 'chris', 'peterson']
     if (words.any? { |word| msg.include? word })
       m.reply "Did you hear that?!!!!! Illuminati confirmed by #{m.user.name}!"
     end
